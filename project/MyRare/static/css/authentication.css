@@ -10,22 +10,41 @@ html, body {
 
 
 
-#form {
+#authentication {
     background-color: white;
     width: 400px;
     height: 450px;
-    margin-bottom: 300px;
     border-radius: 10px;
     box-shadow: 0 0 10px 2px #0c0d0d;
 }
+
+#form-authentication{
+    padding-top: 40px;
+    padding-left: 20%;
+}
+
+#form-authentication input{
+    width: 70%;
+}
+
+#form-authentication button{
+    margin-top: 30px;
+    width: 70%;
+
+}
+
+
+
 
 #title {
     border-top-right-radius: 10px;
     border-top-left-radius:  10px;
     width: 100%;
-    height: 50px;
+    height: 70px;
     background-color: #44aedb;
     color:white;
+    text-align:center;
+    padding-top: 15px;
 }
 
 
