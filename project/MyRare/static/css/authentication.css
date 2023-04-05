@@ -27,6 +27,10 @@ html, body {
     width: 70%;
 }
 
+#form-authentication p{
+    color: red;
+}
+
 #form-authentication button{
     margin-top: 30px;
     width: 70%;

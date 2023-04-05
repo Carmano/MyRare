@@ -1,0 +1,43 @@
+html, body {
+    width: 80%;
+    heigth: 100%;
+    margin: 0 auto;
+}
+
+body {
+    padding-top: 3%;
+    padding-bottom: 3%;
+}
+
+#all {
+    background-color: #b8baba;
+}
+
+#menu {
+    width: 100%;
+    background-color: #f2f2f2;
+    padding: 10px;
+    margin-bottom: 5%;
+}
+
+#menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+#menu li {
+  margin-right: 20px;
+}
+
+#menu a {
+  text-decoration: none;
+  font-size: 20px;
+  color: #333;
+}
+
+#menu a:hover {
+  color: #000;
+  text-decoration: underline;
+}

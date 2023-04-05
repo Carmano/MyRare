@@ -1,7 +1,10 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.http import require_http_methods
-from .models import Student
-from django.urls import reverse
+from .models import Student, Account
+
+
+menu = ['Оценки', 'Редактировать']
+
 
 def redirect_on_login(request):
     return redirect('authentication')
@@ -10,7 +13,8 @@ def redirect_on_login(request):
 def index(request, id):
     student = get_object_or_404(Student, id=id)
     data = {
-        'student': student
+        'student': student,
+        'menu': menu,
     }
     return render(request, 'MyRare/index.html', context=data)
 
@@ -29,12 +33,12 @@ def authentication(request):
         }
         error = validate(data)
         data['error'] = error
-        students = Student.objects.all()
+        users = Account.objects.all()
         if error:
             return render(request, 'MyRare/login.html', context=data)
-        for student in students:
-            if student.login == login and student.password == password:
-                return redirect('index', student.id)
+        for user in users:
+            if user.login == login and user.password == password:
+                return redirect('index', user.id)
         data['error'] = 'Login or password is wrong'
         return render(request, 'MyRare/login.html', context=data)
 
