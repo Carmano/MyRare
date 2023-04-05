@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.http import require_http_methods
 from .models import Student, Account
+from .forms import RegistrationStudentForm
 
 
 menu = ['Оценки', 'Редактировать']
@@ -17,6 +18,22 @@ def index(request, id):
         'menu': menu,
     }
     return render(request, 'MyRare/index.html', context=data)
+
+
+def registration(request):
+    form = RegistrationStudentForm(request.POST)
+    if request.method == 'POST':
+        if form.is_valid():
+            student = Student(
+                name=form.cleaned_data['name'],
+                second_name=form.cleaned_data['second_name'],
+                third_name=form.cleaned_data['third_name'],
+                course=form.cleaned_data['course'],
+                group=form.cleaned_data['group'],
+            )
+            student.save()
+    if request.method == 'GET':
+        return render(request, 'MyRare/registration.html', {'form': form})
 
 
 @require_http_methods(['GET', 'POST'])
