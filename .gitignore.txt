@@ -1,0 +1,3 @@
+.idea/
+main.py
+project/MyRare/__pycache__/
