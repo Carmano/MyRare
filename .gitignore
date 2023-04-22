@@ -1,5 +1,5 @@
 .idea/
 main.py
-**/__pycache__/
-
+project/MyRare/__pycache__/
+project/project/__pycache__/
 
