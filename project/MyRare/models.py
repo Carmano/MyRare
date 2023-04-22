@@ -1,42 +1,44 @@
 from django.db import models
+from django.contrib.auth.models import User
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 
-class Student(models.Model):
-    name = models.CharField(max_length=16)
-    second_name = models.CharField(max_length=16)
-    third_name = models.CharField(max_length=16, null=True, blank=True)
-    course = models.IntegerField()
-    group = models.CharField(max_length=16)
-    photo = models.ImageField(upload_to='images/', null=True, blank=True)
-
-    def __str__(self):
-        if self.third_name is None:
-            return f'{self.second_name} {self.name}'
-        return f'{self.second_name} {self.name[0]}. {self.third_name[0]}.'
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    third_name = models.CharField(max_length=255, blank=True)
+    birth_day = models.DateField(max_length=255, blank=True, null=True)
+    group = models.IntegerField(blank=True, null=True)
+    img = models.ImageField(upload_to='image/', blank=True, null=True)
 
 
-class Account(models.Model):
-    login = models.CharField(max_length=32)
-    password = models.CharField(max_length=24)
-    student = models.OneToOneField(Student, on_delete=models.CASCADE, primary_key=True)
+@receiver(post_save, sender=User)
+def create_user_profile(sender, instance, created, **kwargs):
+    if created:
+        Profile.objects.create(user=instance)
 
-    def __str__(self):
-        return f'{self.student.second_name} {self.student.name[0]}. {self.student.third_name[0]}.'
+
+@receiver(post_save, sender=User)
+def save_user_profile(sender, instance, **kwargs):
+    instance.profile.save()
 
 
 class RecordBook(models.Model):
-    student = models.OneToOneField(Student, on_delete=models.CASCADE, primary_key=True)
+    profile = models.OneToOneField(Profile, on_delete=models.CASCADE, primary_key=True)
     rare = models.ForeignKey("Rare", on_delete=models.CASCADE)
 
 
 class Rare(models.Model):
     type_rare = [
-        (True, 'Зачет'),
-        (False, 'Экзамен'),
+        ('Зачёт', 'Зачёт'),
+        ("Не зачёт", "Не зачёт"),
+        ("Плохо" "Плохо"),
+        ("Удовл", "Удовлетворительно"),
+        ("Хорошо", "Хорошо"),
+        ("Отлично", "Отлично")
     ]
-    teacher = models.CharField(max_length=32)
-    rare = models.CharField(max_length=32)
-    type = models.BooleanField(choices=type_rare)
+    teacher = models.CharField(max_length=255)
+    rare = models.CharField(choices=type_rare)
     discipline = models.OneToOneField('Discipline', on_delete=models.CASCADE)
 
 

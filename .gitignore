@@ -1,2 +1,4 @@
-main.py
 .idea/
+main.py
+project/MyRare/__pycache__/
+project/project/__pycache__/

@@ -4,8 +4,5 @@ from . import views
 
 urlpatterns = [
     path('', views.redirect_on_login, name='redirect_on_login'),
-    path('login/', views.authentication, name='authentication'),
     path('admin/', admin.site.urls),
-    path('<int:id>/', views.index, name='index'),
-    path('<int:id>/edit', views.edit, name='edit'),
 ]
