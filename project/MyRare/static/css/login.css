@@ -1,0 +1,47 @@
+html {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+}
+
+#authentication {
+    display: flex;
+    background-color: rgba(247, 248, 209, 0.705);
+    justify-content: center;
+    align-items: center;
+    
+    width: 400px;
+    height: 450px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 2px #0c0d0d;
+}
+
+#form-authentication {
+    position: relative;
+}
+
+#button {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#registration {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#title {
+    position: absolute;
+    margin-bottom: 260px;
+
+    font
+}

@@ -1,14 +1,10 @@
-
-
 html, body {
-    height: 100%;
+    height: 10%;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: white;
+    background: linear-gradient(180deg, #74A9F9 0%, rgba(164, 14, 14, 0.08) 100%);
 }
-
-
 
 #authentication {
     background-color: white;
