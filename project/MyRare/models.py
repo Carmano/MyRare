@@ -11,6 +11,9 @@ class Profile(models.Model):
     group = models.IntegerField(blank=True, null=True)
     img = models.ImageField(upload_to='image/', blank=True, null=True)
 
+    def __str__(self):
+        return f"{self.user}"
+
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
@@ -30,15 +33,15 @@ class RecordBook(models.Model):
 
 class Rare(models.Model):
     type_rare = [
-        ('Зачёт', 'Зачёт'),
-        ("Не зачёт", "Не зачёт"),
-        ("Плохо" "Плохо"),
-        ("Удовл", "Удовлетворительно"),
-        ("Хорошо", "Хорошо"),
-        ("Отлично", "Отлично")
+        (0, "Не зачёт"),
+        (1, 'Зачёт'),
+        (2, "Плохо"),
+        (3, "Удовлетворительно"),
+        (4, "Хорошо"),
+        (5, "Отлично")
     ]
     teacher = models.CharField(max_length=255)
-    rare = models.CharField(choices=type_rare)
+    rare = models.CharField(max_length=1, choices=type_rare)
     discipline = models.OneToOneField('Discipline', on_delete=models.CASCADE)
 
 
