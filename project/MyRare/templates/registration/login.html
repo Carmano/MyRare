@@ -15,11 +15,9 @@
             </div>
 
             <div id="form-authentication">
-                <form action="{% url 'authentication' %}" method="post">
-<!--                    {% csrf_token %}-->
-<!--                    {%if error%}-->
-<!--                        <p>{{error}}</p>-->
-<!--                    {% endif %}-->
+
+                <form action="{% url 'login' %}" method="post">
+                {% csrf_token %}
                 <label for="login">Логин:</label><br>
                 <input type="text" id="login" name="login" required placeholder="Введите ваше имя"><br><br>
                 <label for="password">Пароль:</label><br>

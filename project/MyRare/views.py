@@ -6,6 +6,6 @@ from django.contrib.auth.models import User
 menu = ['Оценки', 'Редактировать']
 
 
-def redirect_on_login(request):
-    return redirect('authentication')
+def index(request):
+    return render(request, 'MyRare/index.html')
 

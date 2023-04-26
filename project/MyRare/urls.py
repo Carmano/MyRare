@@ -1,8 +1,9 @@
-from django.urls import path
+from django.urls import path, include
 from django.contrib import admin
 from . import views
 
+
 urlpatterns = [
-    path('', views.redirect_on_login, name='redirect_on_login'),
     path('admin/', admin.site.urls),
+    path('index/', views.index, name='index')
 ]

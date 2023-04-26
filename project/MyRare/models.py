@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.db.models.signals import post_save
+from django.db.models.signals import post_save, pre_save
 from django.dispatch import receiver
 
 
@@ -28,7 +28,15 @@ def save_user_profile(sender, instance, **kwargs):
 
 class RecordBook(models.Model):
     profile = models.OneToOneField(Profile, on_delete=models.CASCADE, primary_key=True)
-    rare = models.ForeignKey("Rare", on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f'Зачетная книжка {self.profile.user.username}'
+
+
+@receiver(post_save, sender=Profile)
+def create_record_book(sender, instance, created, **kwargs):
+    if created:
+        RecordBook.objects.create(profile=instance)
 
 
 class Rare(models.Model):
@@ -41,8 +49,9 @@ class Rare(models.Model):
         (5, "Отлично")
     ]
     teacher = models.CharField(max_length=255)
-    rare = models.CharField(max_length=1, choices=type_rare)
+    rare = models.IntegerField(choices=type_rare)
     discipline = models.OneToOneField('Discipline', on_delete=models.CASCADE)
+    record_book = models.ForeignKey("RecordBook", on_delete=models.CASCADE)
 
 
 class Discipline(models.Model):
