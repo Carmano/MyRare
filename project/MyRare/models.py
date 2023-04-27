@@ -9,10 +9,15 @@ class Profile(models.Model):
     third_name = models.CharField(max_length=255, blank=True)
     birth_day = models.DateField(max_length=255, blank=True, null=True)
     group = models.IntegerField(blank=True, null=True)
-    img = models.ImageField(upload_to='image/', blank=True, null=True)
+    img = models.ImageField(upload_to='image/%Y/%m/%d', blank=True, null=True)
 
     def __str__(self):
         return f"{self.user}"
+
+    class Meta:
+        verbose_name = 'Профиль студента'
+        verbose_name_plural = 'Профили студентов'
+        ordering = ['id']
 
 
 @receiver(post_save, sender=User)
@@ -31,6 +36,10 @@ class RecordBook(models.Model):
 
     def __str__(self):
         return f'Зачетная книжка {self.profile.user.username}'
+
+    class Meta:
+        verbose_name = "Зачетная книга"
+        verbose_name_plural = 'Зачетные книги'
 
 
 @receiver(post_save, sender=Profile)
@@ -53,6 +62,10 @@ class Rare(models.Model):
     discipline = models.OneToOneField('Discipline', on_delete=models.CASCADE)
     record_book = models.ForeignKey("RecordBook", on_delete=models.CASCADE)
 
+    class Meta:
+        verbose_name = 'Оценка'
+        verbose_name_plural = 'Оценки'
+
 
 class Discipline(models.Model):
     discipline = models.CharField(max_length=32)
@@ -61,3 +74,7 @@ class Discipline(models.Model):
 
     def __str__(self):
         return f'{self.discipline}'
+
+    class Meta:
+        verbose_name = 'Дисциплина'
+        verbose_name_plural = 'Дисциплины'
