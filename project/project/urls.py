@@ -18,5 +18,4 @@ from django.urls import path, include
 
 urlpatterns = [
     path('', include('MyRare.urls')),
-    path('user/', include('django.contrib.auth.urls')),
 ]
