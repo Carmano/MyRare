@@ -2,46 +2,79 @@ html {
     height: 100%;
     width: 100%;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    /* justify-content: center;
+    align-items: center; */
 }
 
 body {
     padding: 0;
     margin: 0;
+
+    background-image: url(../media/images/design-space-abstract-earth-tone-background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 120px;
 }
 
-#authentication {
+a {
+    text-decoration: underline;
+    color: rgb(87, 111, 180);
+
+    transition: all 0.5s;
+}
+
+a:hover{
+    text-decoration: none;
+    color: rgb(127, 165, 240);
+}
+
+#box {
     display: flex;
-    background-color: rgba(247, 248, 209, 0.705);
+    background-color: rgba(247, 248, 209, 0.805);
     justify-content: center;
     align-items: center;
     
-    width: 400px;
-    height: 450px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px 2px #0c0d0d;
+    width: 580px;
+    height: 520px;
+    border-radius: 4px;
+    box-shadow: 2px 4px 20px 5px rgba(75, 132, 176, 0.2);
 }
 
-#form-authentication {
+#box-form {
     position: relative;
+}
+
+
+#registration {
+    text-align: center;
+}
+
+#head-logo {
+    position: absolute;
+    margin-bottom: 360px;
+}
+
+#logo {
+    width: 200px;
+}
+
+input {
+    width: 222px;
+    height: 26px;
+
+    box-sizing: border-box;
 }
 
 #button {
     display: block;
     margin-left: auto;
     margin-right: auto;
-}
-
-#registration {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-#title {
-    position: absolute;
-    margin-bottom: 260px;
-
-    font
+    margin-top: 15px;
+    width: 222px;
+    height: 26px;
+    
+    box-sizing: border-box;
 }
