@@ -4,23 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Аутентификация</title>
-<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
-<!--    <link rel="stylesheet" type="text/css" href="{% static 'css/authentication.css' %}">-->
-    <link rel="stylesheet" href="../../static/css/login.css">
+    <link rel="stylesheet" href="{% static 'css/login.css'%}">
 </head>
 <body>
         <div id="box">
             <div id="head-logo">
-                <!-- <h3>Аутентификация</h3> -->
-                <img id="logo" src="../../static/media/images/заяц.png">
+                <img id="logo" src="{% static 'media/image/заяц.png' %}">
             </div>
 
             <div id="box-form">
-                <form action="{% url 'authentication' %}" method="post">
-<!--                    {% csrf_token %}-->
-<!--                    {%if error%}-->
-<!--                        <p>{{error}}</p>-->
-<!--                    {% endif %}-->
+                <form action="{% url 'login' %}" method="post">
 
                 <label for="login">Логин:</label><br>
                 <input type="text" id="login" name="login" required placeholder="Логин или email"><br><br>
@@ -32,7 +25,7 @@
                 </form>
 
                 <br>
-                <p id="registration"><a href="/">Зарегистрироваться</a></p>
+                <p id="registration"><a href="{% url 'registration' %}">Зарегистрироваться</a></p>
             </div>
 
         </div>

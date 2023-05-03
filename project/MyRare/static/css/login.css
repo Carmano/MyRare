@@ -10,7 +10,7 @@ body {
     padding: 0;
     margin: 0;
 
-    background-image: url(../media/images/design-space-abstract-earth-tone-background.jpg);
+    background-image: url("/static/media/image/design-space-abstract-earth-tone-background.jpg");
     background-repeat: no-repeat;
     background-size: cover;
 
