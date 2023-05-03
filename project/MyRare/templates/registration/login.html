@@ -4,8 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
-<!--    <link rel="stylesheet" type="text/css" href="{% static 'css/authentication.css' %}">-->
     <link rel="stylesheet" href="../../static/css/login.css">
 </head>
 <body>
@@ -24,7 +22,7 @@
                     <button type="submit" class="btn btn-primary" id="button">Вход</button>
                 </form>  
                 <br>
-                <p id="button"><a href="/">Зарегистрироваться</a></p>
+                <p id="button"><a href="{% url 'registration' %}">Зарегистрироваться</a></p>
             </div>
 
         </div>

@@ -45,7 +45,7 @@ INSTALLED_APPS = [
 ]
 
 LOGIN_REDIRECT_URL = reverse_lazy("profile")
-
+LOGOUT_REDIRECT_URL = reverse_lazy("login")
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
