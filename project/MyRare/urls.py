@@ -4,6 +4,7 @@ from . import views
 # from .views import Registration
 
 urlpatterns = [
+    path('', views.index_redirect, name='index_redirect'),
     path('admin/', admin.site.urls),
     path('user/', include('django.contrib.auth.urls')),
     path('user/registration/', views.registration, name='registration'),

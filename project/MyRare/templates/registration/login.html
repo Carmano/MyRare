@@ -14,9 +14,9 @@
 
             <div id="box-form">
                 <form action="{% url 'login' %}" method="post">
-
+                {% csrf_token %}
                 <label for="login">Логин:</label><br>
-                <input type="text" id="login" name="login" required placeholder="Логин или email"><br><br>
+                <input type="text" id="login" name="username" required placeholder="Логин или email"><br><br>
 
                 <label for="password">Пароль:</label><br>
                 <input type="password" id="password" name="password" required placeholder="Введите пароль"><br><br>
